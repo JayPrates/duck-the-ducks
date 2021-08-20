@@ -2,12 +2,16 @@ class Duck {
     constructor(x, y){
         this.x = x;
         this.y = y;
+        this.width = 50;
+        this.height = 50;
     }
     move() {
 
     }
     draw() {
-        const image = new Image();
-        image.src = "/images";
+        const img = new Image();
+        img.src = "./images/test_duck.png";
+        this.image = img;
+        context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 }
