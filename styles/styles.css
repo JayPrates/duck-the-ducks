@@ -1,0 +1,14 @@
+canvas {
+    border-style: solid;
+}
+
+#game-board {
+    display: flex;
+    justify-content: space-around;
+}
+
+#menu {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
