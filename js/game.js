@@ -22,8 +22,4 @@ class Game {
       //this.gameOver = false;
       //this.animationId = null;
     }
-<<<<<<< HEAD
 }
-=======
-  }
->>>>>>> db2270d6853fff830c544d7cf862a3722b9eaf91
