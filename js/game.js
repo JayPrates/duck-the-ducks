@@ -19,7 +19,11 @@ class Game {
       this.obstacles = [];
       this.score = 0;
       this.obstaclesFrequency = 0;
-      this.gameOver = false;
+      //this.gameOver = false;
       //this.animationId = null;
     }
+<<<<<<< HEAD
 }
+=======
+  }
+>>>>>>> db2270d6853fff830c544d7cf862a3722b9eaf91
