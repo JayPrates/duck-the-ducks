@@ -22,14 +22,4 @@ class Game {
       this.gameOver = false;
       //this.animationId = null;
     }
-<<<<<<< HEAD
 }
-
-function drawDucks (){
-    game.ducks.forEach((duck) => {
-        duck.draw();
-    })
-}
-=======
-  }
->>>>>>> 26e9eadf601bd5d5044933fe5cd3f5917dc7e2d8
