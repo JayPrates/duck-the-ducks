@@ -1,6 +1,10 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
+document.getElementById("start-button").onclick = () => {
+    startGame();
+};
+
 let currentGame;
 
 function startGame() {
@@ -10,77 +14,80 @@ function startGame() {
 }
 
 function updateCanvas() {
-    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    //duck1.draw();
-    drawDucks() 
-    
-    if (currentGame.gameOver === false) {
-        currentGame.animationId = requestAnimationFrame(updateCanvas);
-    }
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
+    requestAnimationFrame(updateCanvas);
+    drawDucks();
+} 
 
-    
-}
-
-function drawDucks() {
-    
+function drawDucks () {
     currentGame.obstaclesFrequency++;
-
     if (currentGame.obstaclesFrequency % 120 === 1) {
         const randomObstacleY = Math.floor(Math.random() * 350);
-
-        const newObstacleLeft = new Duck(
+        const newObstacle = new Duck(
         0,
-        randomObstacleY
+        randomObstacleY);
+        const newObstacle2 = new Duck(
+            900,
+            randomObstacleY
     );
-
-    currentGame.obstaclesLeft.push(newObstacleLeft);
+    currentGame.obstacles.push(newObstacle);
+    currentGame.obstacles2.push(newObstacle2);
     }
 
-    if (currentGame.obstaclesFrequency % 150 === 1) {
-        const randomObstacleY = Math.floor(Math.random() * 350);
-
-        const newObstacleRight = new Duck(
-        900,
-        randomObstacleY
-    );
-
-    currentGame.obstaclesRight.push(newObstacleRight);
-    }
-
-    currentGame.obstaclesLeft.forEach((obstacle, index) => {
-        obstacle.x += 1;
-        obstacle.draw();
-        //
+    currentGame.obstacles.forEach((obstacle) => {
+        if (obstacle.isDead){
+            obstacle.y += 2;
+            obstacle.x += 2;
+            obstacle.draw();
+        } else {
+            obstacle.x += 2;
+            obstacle.draw();
+        }
     });
 
-
-    currentGame.obstaclesRight.forEach((obstacle) => {
-        obstacle.x -= 1;
-        obstacle.draw();
-        //
-    });
-
+    currentGame.obstacles2.forEach((obstacle2) => {
+        if (obstacle2.isDead){
+            obstacle2.y += 2;
+            obstacle2.x -= 2;
+            obstacle2.draw();
+        } else {
+            obstacle2.x -= 2;
+            obstacle2.draw();
+        }
+    })
 }
-
-    // currentGame.obstaclesLeft.forEach((obstacle) => {
-    //         if (obstacle.x < pointerX && obstacle.x + obstacle.width > pointerX && obstacle.y < pointerY && obstacle.y + obstacle.width > pointerY) {
-    //              console.log("This is working")
-    //              }
-    // })
-
-    
+ 
 canvas.addEventListener('click', (e) => {
-    pointerX = e.clientX;
-    pointerY = e.clientY;
-    console.log(pointerX, pointerY);
+    let pointerX = e.offsetX;
+    let pointerY = e.offsetY;
+    console.log(e);
+    for(let i = 0; i<currentGame.obstacles2.length; i++) {
+        console.log(`logging obstacles ${currentGame.obstacles2[i].x}, ${currentGame.obstacles2[i].y}`)
+        if (currentGame.obstacles2[i].x < pointerX && currentGame.obstacles2[i].x + currentGame.obstacles2[i].width > pointerX && currentGame.obstacles2[i].y < pointerY && currentGame.obstacles2[i].y + currentGame.obstacles2[i].width > pointerY) {
+            console.log("This is working Right Ducks")
+
+            console.log(currentGame.obstacles2[i]);
+
+            currentGame.obstacles2[i].isDead = true;
+
+            }
+
+    }
+
+    for(let i = 0; i<currentGame.obstacles.length; i++) {
+
+        console.log(`logging obstacles ${currentGame.obstacles[i].x}, ${currentGame.obstacles[i].y}`)
+
+        if (currentGame.obstacles[i].x < pointerX && currentGame.obstacles[i].x + currentGame.obstacles[i].width > pointerX && currentGame.obstacles[i].y < pointerY && currentGame.obstacles[i].y + currentGame.obstacles[i].width > pointerY) {
+
+            console.log("This is working Left Ducks")
+
+            console.log(currentGame.obstacles[i]);
+
+            currentGame.obstacles[i].isDead = true;
+
+        }
+
+    }
+
 })
-
-
-
-
-let pointerX;
-let pointerY;
-
-
-
-startGame();

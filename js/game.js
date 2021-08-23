@@ -15,8 +15,8 @@
 
 class Game {
     constructor() {
-      this.obstaclesLeft = [];
-      this.obstaclesRight = [];
+      this.obstacles = [];
+      this.obstacles2 = [];
       this.score = 0;
       this.obstaclesFrequency = 0;
       this.gameOver = false;
