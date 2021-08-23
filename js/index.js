@@ -1,11 +1,6 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-// const duck1 = new Duck(50,50);
-// duck1.draw();
-// console.log(duck1);
-
-
 let currentGame;
 
 function startGame() {
@@ -17,7 +12,6 @@ function startGame() {
 function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
     requestAnimationFrame(updateCanvas);
-    //duck1.draw();
     drawDucks();
 }
 
@@ -48,15 +42,10 @@ function drawDucks () {
             obstacle.draw();
         }
 
-        // if (obstacle.y > raceCanvas.height) {
-        //     currentGame.score++;
-        //     document.getElementById("score").innerText = currentGame.score;
-        //     currentGame.obstacles.splice(index, 1);
-        // }
+
     });
 
     currentGame.obstacles2.forEach((obstacle2) => {
-        //console.log(obstacle2.isDead)
         if (obstacle2.isDead){
             obstacle2.y += 2;
             obstacle2.x -= 2;
@@ -64,14 +53,9 @@ function drawDucks () {
         } else {
             obstacle2.x -= 2;
             obstacle2.draw();
-        }
-       
+        }      
     })
-
 }
-
-//let pointerX;
-//let pointerY;
 
 canvas.addEventListener('click', (e) => {
     let pointerX = e.offsetX;
@@ -94,7 +78,6 @@ canvas.addEventListener('click', (e) => {
         }
     }
 })
-
 
 startGame();
 
