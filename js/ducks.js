@@ -13,11 +13,4 @@ class Duck {
         this.image = img;
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
-<<<<<<< HEAD
-    dead() {
-        this.isDead = true
-    }
-=======
-    
->>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
 }
