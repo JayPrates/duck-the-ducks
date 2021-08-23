@@ -1,11 +1,14 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
+<<<<<<< HEAD
 // const duck1 = new Duck(50,50);
 // duck1.draw();
 // console.log(duck1);
 
 
+=======
+>>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
 let currentGame;
 
 function startGame() {
@@ -15,24 +18,42 @@ function startGame() {
 }
 
 function updateCanvas() {
+<<<<<<< HEAD
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
     requestAnimationFrame(updateCanvas);
+=======
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+>>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
     //duck1.draw();
-    drawDucks();
+    drawDucks() 
+    
+    if (currentGame.gameOver === false) {
+        currentGame.animationId = requestAnimationFrame(updateCanvas);
+    }
+
+    
 }
 
+<<<<<<< HEAD
 function drawDucks () {
     currentGame.obstaclesFrequency++;
+=======
+function drawDucks() {
+    
+    currentGame.obstaclesFrequency++;
+
+>>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
     if (currentGame.obstaclesFrequency % 120 === 1) {
         const randomObstacleY = Math.floor(Math.random() * 350);
 
-        const newObstacle = new Duck(
+        const newObstacleLeft = new Duck(
         0,
         randomObstacleY);
         const newObstacle2 = new Duck(
             900,
             randomObstacleY
     );
+<<<<<<< HEAD
     
     currentGame.obstacles.push(newObstacle);
     currentGame.obstacles2.push(newObstacle2);
@@ -53,6 +74,27 @@ function drawDucks () {
         //     document.getElementById("score").innerText = currentGame.score;
         //     currentGame.obstacles.splice(index, 1);
         // }
+=======
+
+    currentGame.obstaclesLeft.push(newObstacleLeft);
+    }
+
+    if (currentGame.obstaclesFrequency % 150 === 1) {
+        const randomObstacleY = Math.floor(Math.random() * 350);
+
+        const newObstacleRight = new Duck(
+        900,
+        randomObstacleY
+    );
+
+    currentGame.obstaclesRight.push(newObstacleRight);
+    }
+
+    currentGame.obstaclesLeft.forEach((obstacle, index) => {
+        obstacle.x += 1;
+        obstacle.draw();
+        //
+>>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
     });
 
     currentGame.obstacles2.forEach((obstacle2) => {
@@ -68,8 +110,15 @@ function drawDucks () {
        
     })
 
+    currentGame.obstaclesRight.forEach((obstacle) => {
+        obstacle.x -= 1;
+        obstacle.draw();
+        //
+    });
+
 }
 
+<<<<<<< HEAD
 //let pointerX;
 //let pointerY;
 
@@ -99,3 +148,27 @@ canvas.addEventListener('click', (e) => {
 
 startGame();
 
+=======
+    // currentGame.obstaclesLeft.forEach((obstacle) => {
+    //         if (obstacle.x < pointerX && obstacle.x + obstacle.width > pointerX && obstacle.y < pointerY && obstacle.y + obstacle.width > pointerY) {
+    //              console.log("This is working")
+    //              }
+    // })
+
+    
+canvas.addEventListener('click', (e) => {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    console.log(pointerX, pointerY);
+})
+
+
+
+
+let pointerX;
+let pointerY;
+
+
+
+startGame();
+>>>>>>> 41da3e8a4218556e539c3bfd7d18d5c9485e4bee
