@@ -3,11 +3,10 @@ class Duck {
         this.x = x;
         this.y = y;
     }
-    move() {
-
+    draw(){
+        context.drawImage(this.Image, this.x, this.y, 50, 70)
     }
-    draw() {
-        const image = new Image();
-        image.src = "/images";
+    move() {
+        
     }
 }

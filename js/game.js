@@ -16,3 +16,9 @@ const game = {
         clearInterval(interval);
     }
 }
+
+function drawDucks (){
+    game.ducks.forEach((duck) => {
+        duck.draw();
+    })
+}
