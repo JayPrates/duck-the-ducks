@@ -15,6 +15,7 @@
 
 class Game {
     constructor() {
+      
       this.duck = {};
       this.obstacles = [];
       this.score = 0;

@@ -9,6 +9,7 @@ updateCanvas();
 let currentGame;
 
 function startGame() {
+    frames = 0;
     currentGame = new Game();
 }
 
