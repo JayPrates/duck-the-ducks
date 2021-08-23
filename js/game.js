@@ -15,11 +15,11 @@
 
 class Game {
     constructor() {
-      this.duck = {};
-      this.obstacles = [];
+      this.obstaclesLeft = [];
+      this.obstaclesRight = [];
       this.score = 0;
       this.obstaclesFrequency = 0;
-      //this.gameOver = false;
-      //this.animationId = null;
+      this.gameOver = false;
+      this.animationId = null;
     }
 }
