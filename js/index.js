@@ -144,8 +144,12 @@ canvas.addEventListener('click', (e) => {
         if (currentGame.obstacles2[i].x < pointerX && currentGame.obstacles2[i].x + currentGame.obstacles2[i].width > pointerX && currentGame.obstacles2[i].y < pointerY && currentGame.obstacles2[i].y + currentGame.obstacles2[i].width > pointerY) {
             console.log("This is working Right Ducks")
             console.log(currentGame.obstacles2[i]);
+            if (currentGame.obstacles2[i].isDead){
+                currentGame.score += 0;
+            }else {
+                currentGame.score += 5;
+            }
             currentGame.obstacles2[i].isDead = true;
-            currentGame.score += 5;
         }
     }
 
@@ -154,9 +158,13 @@ canvas.addEventListener('click', (e) => {
         if (currentGame.obstacles[i].x < pointerX && currentGame.obstacles[i].x + currentGame.obstacles[i].width > pointerX && currentGame.obstacles[i].y < pointerY && currentGame.obstacles[i].y + currentGame.obstacles[i].width > pointerY) {
             console.log("This is working Left Ducks")
             console.log(currentGame.obstacles[i]);
+            if (currentGame.obstacles[i].isDead){
+                currentGame.score += 0;
+            }else {
+                currentGame.score += 5;
+            }
             currentGame.obstacles[i].isDead = true;
             currentGame.obstacles[i].isLeft = true;
-            currentGame.score += 5;
         }
 
     }
@@ -180,7 +188,5 @@ canvas.addEventListener('click', (e) => {
             currentGame.obstaclesSeag[i].isLeft = true;
             currentGame.score -= 10;
         }
-
     }
-
 })
