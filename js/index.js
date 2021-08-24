@@ -17,6 +17,7 @@ function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
     requestAnimationFrame(updateCanvas);
     drawDucks();
+    currentGame.dispScore();
 } 
 
 function drawDucks () {
@@ -43,6 +44,7 @@ function drawDucks () {
             obstacle.draw();
         } else {
             obstacle.x += 2;
+            obstacle.isLeft = true;
             obstacle.draw();
         }
     });
@@ -72,6 +74,7 @@ canvas.addEventListener('click', (e) => {
             console.log("This is working Right Ducks")
             console.log(currentGame.obstacles2[i]);
             currentGame.obstacles2[i].isDead = true;
+            currentGame.score += 5;
         }
     }
 
@@ -81,6 +84,8 @@ canvas.addEventListener('click', (e) => {
             console.log("This is working Left Ducks")
             console.log(currentGame.obstacles[i]);
             currentGame.obstacles[i].isDead = true;
+            currentGame.obstacles[i].isLeft = true;
+            currentGame.score += 5;
         }
 
     }

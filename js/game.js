@@ -7,4 +7,10 @@ class Game {
       this.gameOver = false;
       this.animationId = null;
     }
+
+    dispScore() {
+          context.font = "18px Arial";
+          context.fillStyle = "white";
+          context.fillText(`Score: ${this.score}`, 430, 50);
+    }
 }
