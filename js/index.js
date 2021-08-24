@@ -28,7 +28,7 @@ function updateCanvas() {
     } else {
         drawDucks();
     }
-    if (currentGame.score === 150) {
+    if (currentGame.score === 10) {
          startLvl2 = true;
      }
 } 
@@ -174,8 +174,12 @@ canvas.addEventListener('click', (e) => {
         if (currentGame.obstaclesSeag2[i].x < pointerX && currentGame.obstaclesSeag2[i].x + currentGame.obstaclesSeag2[i].width > pointerX && currentGame.obstaclesSeag2[i].y < pointerY && currentGame.obstaclesSeag2[i].y + currentGame.obstaclesSeag2[i].width > pointerY) {
             console.log("This is working Right Seagulls")
             console.log(currentGame.obstaclesSeag2[i]);
+            if(currentGame.obstaclesSeag2[i].isDead){
+                currentGame.score += 0
+            }else {
+                currentGame.score -= 10;
+            }
             currentGame.obstaclesSeag2[i].isDead = true;
-            currentGame.score -= 10;
         }
     }
 
@@ -184,9 +188,13 @@ canvas.addEventListener('click', (e) => {
         if (currentGame.obstaclesSeag[i].x < pointerX && currentGame.obstaclesSeag[i].x + currentGame.obstaclesSeag[i].width > pointerX && currentGame.obstaclesSeag[i].y < pointerY && currentGame.obstaclesSeag[i].y + currentGame.obstaclesSeag[i].width > pointerY) {
             console.log("This is working Left Seagulls")
             console.log(currentGame.obstaclesSeag[i]);
+            if(currentGame.obstaclesSeag[i].isDead){
+                currentGame.score += 0
+            }else {
+                currentGame.score -= 10;
+            }
             currentGame.obstaclesSeag[i].isDead = true;
             currentGame.obstaclesSeag[i].isLeft = true;
-            currentGame.score -= 10;
         }
     }
 })
