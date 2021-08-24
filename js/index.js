@@ -34,6 +34,8 @@ function drawDucks () {
     currentGame.obstacles2.push(newObstacle2);
     }
 
+    //Left Ducks
+
     currentGame.obstacles.forEach((obstacle) => {
         if (obstacle.isDead){
             obstacle.y += 2;
@@ -45,10 +47,13 @@ function drawDucks () {
         }
     });
 
+    //Right Ducks
+
     currentGame.obstacles2.forEach((obstacle2) => {
         if (obstacle2.isDead){
             obstacle2.y += 2;
             obstacle2.x -= 2;
+            //obstacles2.x;
             obstacle2.draw();
         } else {
             obstacle2.x -= 2;
