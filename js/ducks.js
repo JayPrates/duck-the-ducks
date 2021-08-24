@@ -13,5 +13,4 @@ class Duck {
         this.image = img;
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
-    
 }
