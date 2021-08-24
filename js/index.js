@@ -7,20 +7,16 @@ document.getElementById("start-button").onclick = () => {
 
 //LVL1
 let currentGame;
+
 function startGame() {
     currentGame = new Game();
     cancelAnimationFrame(currentGame.animationId);
     updateCanvas();
 }
 
-//LVL 2
-// let currentGameLvl2;
+//Level 2 - Seaguls Appear
 let startLvl2 = false;
-// function startGameLvl2() {
-//     currentGameLvl2 = new Game();
-//     cancelAnimationFrame(currentGame.animationId);
-//     updateCanvas();
-// }
+
 
 function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
@@ -32,7 +28,7 @@ function updateCanvas() {
     } else {
         drawDucks();
     }
-    if (currentGame.score === 10) {
+    if (currentGame.score === 150) {
          startLvl2 = true;
      }
 } 
@@ -45,11 +41,17 @@ function drawDucks () {
         const newObstacle = new Duck(
         0,
         randomObstacleY);
+
+    currentGame.obstacles.push(newObstacle);
+
+    }
+    if (currentGame.obstaclesFrequency % 267 === 1) {
+        const randomObstacleY = Math.floor(Math.random() * 350);
         const newObstacle2 = new Duck(
             900,
             randomObstacleY
     );
-    currentGame.obstacles.push(newObstacle);
+
     currentGame.obstacles2.push(newObstacle2);
     }
 
@@ -58,10 +60,10 @@ function drawDucks () {
     currentGame.obstacles.forEach((obstacle) => {
         if (obstacle.isDead){
             obstacle.y += 2;
-            obstacle.x += 2;
+            obstacle.x += 10;
             obstacle.draw();
         } else {
-            obstacle.x += 2;
+            obstacle.x += 10;
             obstacle.isLeft = true;
             obstacle.draw();
         }
@@ -72,29 +74,36 @@ function drawDucks () {
     currentGame.obstacles2.forEach((obstacle2) => {
         if (obstacle2.isDead){
             obstacle2.y += 2;
-            obstacle2.x -= 2;
-            //obstacles2.x;
+            obstacle2.x -= 10;
             obstacle2.draw();
         } else {
-            obstacle2.x -= 2;
+            obstacle2.x -= 10;
             obstacle2.draw();
         }
     })
 }
 
+//let newObstacleSeag;
+//let newObstacleSeag2;
+
+
+
 //Drawing Seagulls
 function drawSeagulls () {
     if (currentGame.obstaclesFrequency % 120 === 1) {
         const randomObstacleY = Math.floor(Math.random() * 350);
-        const newObstacleSeag = new Seagull(
+        newObstacleSeag = new Seagull(
         0,
         randomObstacleY);
-        const newObstacleSeag2 = new Seagull(
+        currentGame.obstaclesSeag.push(newObstacleSeag);
+    }
+
+    if (currentGame.obstaclesFrequency % 180 === 1) {
+        const randomObstacleY = Math.floor(Math.random() * 350);
+        newObstacleSeag2 = new Seagull(
             900,
-            randomObstacleY
-    );
-    currentGame.obstaclesSeag.push(newObstacleSeag);
-    currentGame.obstaclesSeag2.push(newObstacleSeag2);
+            randomObstacleY);
+        currentGame.obstaclesSeag2.push(newObstacleSeag2);
     }
 
     //Left Seagulls
@@ -102,10 +111,10 @@ function drawSeagulls () {
     currentGame.obstaclesSeag.forEach((obstacleS) => {
         if (obstacleS.isDead){
             obstacleS.y += 2;
-            obstacleS.x += 5;
+            obstacleS.x += 15;
             obstacleS.draw();
         } else {
-            obstacleS.x += 5;
+            obstacleS.x += 15;
             obstacleS.isLeft = true;
             obstacleS.draw();
         }
@@ -116,16 +125,16 @@ function drawSeagulls () {
     currentGame.obstaclesSeag2.forEach((obstacleS2) => {
         if (obstacleS2.isDead){
             obstacleS2.y += 2;
-            obstacleS2.x -= 5;
+            obstacleS2.x -= 15;
             //obstacles2.x;
             obstacleS2.draw();
         } else {
-            obstacleS2.x -= 5;
+            obstacleS2.x -= 15;
             obstacleS2.draw();
         }
     })
 }
- 
+
 canvas.addEventListener('click', (e) => {
     let pointerX = e.offsetX;
     let pointerY = e.offsetY;
