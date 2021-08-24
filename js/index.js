@@ -7,6 +7,7 @@ document.getElementById("start-button").onclick = () => {
 
 //LVL1
 let currentGame;
+let lives = 3;
 
 function startGame() {
     currentGame = new Game();
@@ -20,8 +21,12 @@ let startLvl2 = false;
 
 function updateCanvas() {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    requestAnimationFrame(updateCanvas);
+    gameMotor = requestAnimationFrame(updateCanvas);
     currentGame.dispScore();
+    if (lives === 0) {
+        cancelAnimationFrame(gameMotor);
+        lives = 3;
+    }
     if (startLvl2 === true) {
         drawDucks();
         drawSeagulls();
@@ -57,7 +62,7 @@ function drawDucks () {
 
     //Left Ducks
 
-    currentGame.obstacles.forEach((obstacle) => {
+    currentGame.obstacles.forEach((obstacle, index) => {
         if (obstacle.isDead){
             obstacle.y += 2;
             obstacle.x += 10;
@@ -66,12 +71,17 @@ function drawDucks () {
             obstacle.x += 10;
             obstacle.isLeft = true;
             obstacle.draw();
+            if (obstacle.x > canvas.clientWidth) {
+                currentGame.obstacles.splice(index, 1);
+                console.log("Deleted left duck")
+                lives -= 1;
+            }
         }
     });
 
     //Right Ducks
 
-    currentGame.obstacles2.forEach((obstacle2) => {
+    currentGame.obstacles2.forEach((obstacle2, index2) => {
         if (obstacle2.isDead){
             obstacle2.y += 2;
             obstacle2.x -= 10;
@@ -79,14 +89,13 @@ function drawDucks () {
         } else {
             obstacle2.x -= 10;
             obstacle2.draw();
+            if(obstacle2.width < canvas.x) {
+                currentGame.obstacles2.splice(index2, 1);
+                lives -= 1;
+            }
         }
     })
 }
-
-//let newObstacleSeag;
-//let newObstacleSeag2;
-
-
 
 //Drawing Seagulls
 function drawSeagulls () {
