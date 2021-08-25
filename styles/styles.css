@@ -51,6 +51,7 @@ canvas {
     border: 3px solid rgb(0, 204, 255);
     border-radius: 50px;
     cursor: pointer;
+    margin: 0 10px 0 30px;
 }
 
 .instructions {
@@ -90,5 +91,5 @@ footer {
     height: 100px;
     width: 100%;
     background-color: brown;
-    margin-top: 50px;
+    /* position absolute to fix to bottom */
 }
