@@ -6,6 +6,7 @@ class Seagull {
         this.height = 50;
         this.isDead = false;
         this.isLeft = false;
+        this.clicks = 0;
     }
 
     draw() {
