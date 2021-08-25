@@ -13,16 +13,21 @@
 </head>
 <body>
     <div id="game-board">
-        <div id="menu">
-            <i class="logo"></i>
+        <header id="menu">
+            <div class="leftM">
             <h1>Duck the ducks</h1>
             <div class="instructions">
                 <img class="instructionsPointer" src="./images/icon-pointer.png" height="50px">
-                <p>Use your mouse click to eliminate the ducks</p>
+                <p>Use your mouse to eliminate the ducks</p>
             </div>
-            <button id="start-button">Start Button</button>
         </div>
-        <canvas id="canvas" width="900" height="700"></canvas>
+            <button id="start-button">Start Button</button>
+        </header>
+        <div id="canvas-board">
+            <img src="./images/game_content/building_l.png" height = "700px" width="260px" alt="pink building"/>
+            <canvas id="canvas" width="900" height="700"></canvas>
+            <img src="./images/game_content/building_r.png" height = "400px" width="200px" alt="pink building"/>
+        </div>
     </div>
     <footer></footer>
 
