@@ -9,6 +9,12 @@ document.getElementById("start-button").onclick = () => {
 const music = new Audio("./sounds/Estranged Callipoe Waltz.mp3")
 //Sounds
 const quackSound = new Audio("./sounds/Duck Quack.mp3");
+const popSound = new Audio("./sounds/pop.mp3")
+
+//Empty Heart
+const heartEmptyImg = new Image()
+      heartEmptyImg.src = "./images/game_content/test_heart_dead.png";
+
 
 
 //LVL1
@@ -48,7 +54,7 @@ function timeout() {
 
 function timeout2() {
     setTimeout(function () {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor((Math.random() * 550) + 70);
         newObstacleSeag4 = new Seagull(
         0,
         randomObstacleY);
@@ -81,8 +87,8 @@ function updateCanvas() {
         lives = 5;
         music.pause();
         startLvl2 = false;
-        alert(`         Game Over!
-        Your score was: ${currentGame.score}`);
+        /*alert(`         Game Over!
+        Your score was: ${currentGame.score}`);*/
     }
     
     if (startLvl2 === true) {
@@ -100,7 +106,7 @@ function updateCanvas() {
 function drawDucks (controlWings) {
     currentGame.obstaclesFrequency++;
     if (currentGame.obstaclesFrequency % 120 === 1) {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
         const newObstacle = new Duck(
         0,
         randomObstacleY);
@@ -109,7 +115,7 @@ function drawDucks (controlWings) {
 
     }
     if (currentGame.obstaclesFrequency % 267 === 1) {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
         const newObstacle2 = new Duck(
             900,
             randomObstacleY
@@ -163,7 +169,7 @@ function drawDucks (controlWings) {
 //Drawing Seagulls
 function drawSeagulls () {
     if (currentGame.obstaclesFrequency % 120 === 1) {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
         newObstacleSeag = new Seagull(
         0,
         randomObstacleY);
@@ -171,7 +177,7 @@ function drawSeagulls () {
     }
 
     if (currentGame.obstaclesFrequency % 180 === 1) {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
         newObstacleSeag2 = new Seagull(
             900,
             randomObstacleY);
@@ -217,7 +223,11 @@ function drawSeagulls () {
     currentGame.obstaclesSeag3.forEach((seagHeart, index5) => {
         seagHeart.x -= 5;
         seagHeart.draw();
-        heart = context.drawImage(currentGame.imageH1, seagHeart.x , (seagHeart.y + 50), 32, 32);
+        if(seagHeart.heartEmpty){
+            heart = context.drawImage(heartEmptyImg, seagHeart.x , (seagHeart.y + 50), 32, 32);
+        }else {
+            heart = context.drawImage(currentGame.imageH1, seagHeart.x , (seagHeart.y + 50), 32, 32);
+        }
         if(seagHeart.x < 0) {
             currentGame.obstaclesSeag3.splice(index5, 1);
             console.log("Right seag spliced");
@@ -228,8 +238,12 @@ function drawSeagulls () {
     currentGame.obstaclesSeag4.forEach((seagHeart2, index6) => {
         seagHeart2.x += 5;
         seagHeart2.isLeft = true;
+        if(seagHeart2.heartEmpty){
+            hear2 = context.drawImage(heartEmptyImg, seagHeart2.x , (seagHeart2.y + 50), 32, 32);
+        }else {
+            hear2 = context.drawImage(currentGame.imageH1, seagHeart2.x , (seagHeart2.y + 50), 32, 32);
+        }
         seagHeart2.draw();
-        hear2 = context.drawImage(currentGame.imageH1, seagHeart2.x , (seagHeart2.y + 50), 32, 32);
         if(seagHeart2.x > 900) {
             currentGame.obstaclesSeag4.splice(index6, 1);
             console.log("left seag spliced");
@@ -274,7 +288,7 @@ canvas.addEventListener('click', (e) => {
 //for i seagulls
     for(let i = 0; i<currentGame.obstaclesSeag2.length; i++) {
         console.log(`logging obstacles ${currentGame.obstaclesSeag2[i].x}, ${currentGame.obstaclesSeag2[i].y}`)
-        if (currentGame.obstaclesSeag2[i].x < pointerX && currentGame.obstaclesSeag2[i].x + currentGame.obstaclesSeag2[i].width > pointerX && currentGame.obstaclesSeag2[i].y < pointerY && currentGame.obstaclesSeag2[i].y + currentGame.obstaclesSeag2[i].width > pointerY) {
+        if (currentGame.obstaclesSeag2[i].x < pointerX && currentGame.obstaclesSeag2[i].x + currentGame.obstaclesSeag2[i].width > pointerX && currentGame.obstaclesSeag2[i].y < pointerY && (currentGame.obstaclesSeag2[i].y + 50) > pointerY) {
             console.log("This is working Right Seagulls")
             console.log(currentGame.obstaclesSeag2[i]);
             if(currentGame.obstaclesSeag2[i].isDead){
@@ -288,7 +302,7 @@ canvas.addEventListener('click', (e) => {
 
     for(let i = 0; i<currentGame.obstaclesSeag.length; i++) {
         console.log(`logging obstacles ${currentGame.obstaclesSeag[i].x}, ${currentGame.obstaclesSeag[i].y}`)
-        if (currentGame.obstaclesSeag[i].x < pointerX && currentGame.obstaclesSeag[i].x + currentGame.obstaclesSeag[i].width > pointerX && currentGame.obstaclesSeag[i].y < pointerY && currentGame.obstaclesSeag[i].y + currentGame.obstaclesSeag[i].width > pointerY) {
+        if (currentGame.obstaclesSeag[i].x < pointerX && currentGame.obstaclesSeag[i].x + currentGame.obstaclesSeag[i].width > pointerX && currentGame.obstaclesSeag[i].y < pointerY && (currentGame.obstaclesSeag[i].y + 50) > pointerY) {
             console.log("This is working Left Seagulls")
             console.log(currentGame.obstaclesSeag[i]);
             if(currentGame.obstaclesSeag[i].isDead){
@@ -315,14 +329,16 @@ canvas.addEventListener('click', (e) => {
         if (currentGame.obstaclesSeag4[i].x < pointerX && (currentGame.obstaclesSeag4[i].x + currentGame.obstaclesSeag4[i].width) > pointerX && (currentGame.obstaclesSeag4[i].y + currentGame.obstaclesSeag4[i].height) < pointerY && ((currentGame.obstaclesSeag4[i].y + 32) + currentGame.obstaclesSeag4[i].height ) > pointerY) {
             let click1 = 0;
             if(lives<5 && currentGame.obstaclesSeag4[i].clicks === 0){
+                popSound.play();
+                currentGame.obstaclesSeag4[i].heartEmpty = true;
                 lives += 1;
                 currentGame.obstaclesSeag4[i].clicks += 1;
             }
-        console.log("life added");
+        console.log("life added 1");
         }
     }
     for(let i = 0; i<currentGame.obstaclesSeag3.length; i++) {
-        if (currentGame.obstaclesSeag3[i].x < pointerX && currentGame.obstaclesSeag3[i].x + currentGame.obstaclesSeag3[i].width > pointerX && currentGame.obstaclesSeag3[i].y < pointerY && currentGame.obstaclesSeag3[i].y + currentGame.obstaclesSeag3[i].height > pointerY) {
+        if (currentGame.obstaclesSeag3[i].width < pointerX && -(currentGame.obstaclesSeag3[i].x + currentGame.obstaclesSeag3[i].width) > pointerX && currentGame.obstaclesSeag3[i].y < pointerY && currentGame.obstaclesSeag3[i].y + currentGame.obstaclesSeag3[i].height > pointerY) {
             if(currentGame.obstaclesSeag3[i].isDead){
                 currentGame.score += 0
             }else {
@@ -332,12 +348,14 @@ canvas.addEventListener('click', (e) => {
         }
     }
     for(let i = 0; i<currentGame.obstaclesSeag3.length; i++) {
-        if (currentGame.obstaclesSeag3[i].x < pointerX && (currentGame.obstaclesSeag3[i].x + currentGame.obstaclesSeag3[i].width) > pointerX && (currentGame.obstaclesSeag4[i].y + currentGame.obstaclesSeag3[i].height) < pointerY && ((currentGame.obstaclesSeag3[i].y + 32) + currentGame.obstaclesSeag3[i].height ) > pointerY) {
+        if (currentGame.obstaclesSeag3[i].x < pointerX && (currentGame.obstaclesSeag3[i].x + currentGame.obstaclesSeag3[i].width) > pointerX && (currentGame.obstaclesSeag3[i].y + currentGame.obstaclesSeag3[i].height) < pointerY && ((currentGame.obstaclesSeag3[i].y + 32) + currentGame.obstaclesSeag3[i].height ) > pointerY) {
             if(lives < 5 && currentGame.obstaclesSeag3[i].clicks === 0){
+                popSound.play();
+                currentGame.obstaclesSeag3[i].heartEmpty = true;
                 lives += 1;
                 currentGame.obstaclesSeag3[i].clicks += 1;
             }
-            console.log("life added");
+            console.log("life added 2");
         }
     }
 })
