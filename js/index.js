@@ -152,13 +152,13 @@ function drawDucks (controlWings) {
             obstacle2.y += 2;
             obstacle2.x -= 10;
             obstacle2.draw(controlWings);
-            if(obstacle2.x < 0) {
+            if(obstacle2.width < 0) {
                 currentGame.obstacles2.splice(index2, 1);
             }
         } else {
             obstacle2.x -= 10;
             obstacle2.draw(controlWings);
-            if(obstacle2.isDead === false && obstacle2.x < 0) {
+            if(obstacle2.isDead === false && obstacle2.width < 0) {
                 currentGame.obstacles2.splice(index2, 1);
                 lives -= 1;
             }
@@ -211,7 +211,7 @@ function drawSeagulls () {
         } else {
             obstacleS2.x -= 15;
             obstacleS2.draw();
-            if(obstacleS2.x < 0) {
+            if(obstacleS2.width < 0) {
                 currentGame.obstaclesSeag2.splice(index4, 1)
                 console.log("right seag out of bounds");
             }
@@ -243,7 +243,7 @@ function drawSeagulls () {
             hear2 = context.drawImage(currentGame.imageH1, seagHeart2.x , (seagHeart2.y + 50), 32, 32);
         }
         seagHeart2.draw();
-        if(seagHeart2.x > 900) {
+        if(seagHeart2.width > 900) {
             currentGame.obstaclesSeag4.splice(index6, 1);
             console.log("left seag spliced");
         }
