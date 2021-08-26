@@ -2,8 +2,8 @@ class Duck {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 50;
-        this.height = 33;
+        this.width = 70;
+        this.height = 53;
         this.isDead = false;
         this.isLeft = false;
         //
@@ -18,54 +18,46 @@ class Duck {
         console.log("controlWings", controlWings);
         if (this.isDead && this.isLeft) {
             const deadImg = new Image();
-            deadImg.src = "./images/test_dead_duck.png";
+            deadImg.src = "./images/game_content/char_duck_dead.png";
             this.image = deadImg;
             context.scale(-1,1);
             context.drawImage(this.image, - (this.x + this.width) , this.y, this.width, this.height);
-            // context.translate(this.x+this.width ,this.y);
         
         }else if(this.isDead && !this.isLeft) {
             const deadImg = new Image();
-            deadImg.src = "./images/test_dead_duck.png";
+            deadImg.src = "./images/game_content/char_duck_dead.png";
             this.image = deadImg;
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
         
         }else if(this.isLeft && !this.isDead){
-            const img = new Image();
-            img.src = "./images/test_duck.png";
+            const img = new Image(); 
+            if(controlWings < 12) {
+                console.log("1")
+                img.src = "./images/game_content/char_duck_wUp.png";
+            } else {
+                console.log("2")
+                img.src = "./images/game_content/char_duck_wDw.png";
+            }
+
+        
             this.image = img;
             context.scale(-1,1);
             context.drawImage(this.image, - (this.x + this.width) , this.y, this.width, this.height);
 
         } else {
             const img = new Image(); 
-            // img.src = "./images/test_duck.png";
             if(controlWings < 12) {
                 console.log("1")
                 img.src = "./images/game_content/char_duck_wUp.png";
-             //   this.frameIndex ++;
+
             } else {
                 console.log("2")
                 img.src = "./images/game_content/char_duck_wDw.png";
             }
-            // if(this.count >= 1) {
-                
-            //     this.frameIndex = 0;
-            // }
-         //   img.src = "./images/game_content/duck_spritesheet.png";
+
+        
             this.image = img;
-         context.drawImage(this.image, this.x, this.y, this.width, this.height);
-            // context.drawImage(
-            //     this.image,
-            //     0,
-            //     0,
-            //     this.width,
-            //     this.height,
-            //     this.x,
-            //     this.y,
-            //     this.width * this.scale,
-            //     this.height * this.scale
-            //     );
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
            
         }
        context.setTransform();
