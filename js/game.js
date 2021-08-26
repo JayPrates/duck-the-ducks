@@ -17,9 +17,9 @@ class Game {
     }
 
     dispScore() {
-          context.font = "18px Arial";
+          context.font = "28px Azeret Mono, monospace";
           context.fillStyle = "white";
-          context.fillText(`Score: ${this.score}`, 430, 50);
+          context.fillText(`Score: ${this.score}`, 720, 50);
     }
     drawHearts(){
       if (lives === 5) {
