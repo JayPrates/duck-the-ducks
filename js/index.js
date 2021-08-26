@@ -97,7 +97,7 @@ function updateCanvas() {
     } else {
         drawDucks(controlWings);
     }
-    if (currentGame.score === 100) {
+    if (currentGame.score === 10) {
          startLvl2 = true;
      }
 } 
@@ -152,13 +152,13 @@ function drawDucks (controlWings) {
             obstacle2.y += 2;
             obstacle2.x -= 10;
             obstacle2.draw(controlWings);
-            if(obstacle2.width < 0) {
+            if((obstacle2.x + 70) < 0) {
                 currentGame.obstacles2.splice(index2, 1);
             }
         } else {
             obstacle2.x -= 10;
             obstacle2.draw(controlWings);
-            if(obstacle2.isDead === false && obstacle2.width < 0) {
+            if(obstacle2.isDead === false && (obstacle2.x + 70) < 0) {
                 currentGame.obstacles2.splice(index2, 1);
                 lives -= 1;
             }
@@ -208,10 +208,13 @@ function drawSeagulls () {
             obstacleS2.y += 2;
             obstacleS2.x -= 15;
             obstacleS2.draw();
+            if((obstacleS2.x + 70) < 0){
+                currentGame.newObstacleSeag2.splice(index4, 1);
+            }
         } else {
             obstacleS2.x -= 15;
             obstacleS2.draw();
-            if(obstacleS2.width < 0) {
+            if((obstacleS2.x + 70) < 0) {
                 currentGame.obstaclesSeag2.splice(index4, 1)
                 console.log("right seag out of bounds");
             }
