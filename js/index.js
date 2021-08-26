@@ -15,7 +15,8 @@ const popSound = new Audio("./sounds/pop.mp3")
 const heartEmptyImg = new Image()
       heartEmptyImg.src = "./images/game_content/test_heart_dead.png";
 
-
+let changeTxt = document.getElementById("start-button");
+let invis = document.getElementById("invis-gameover");
 
 //LVL1
 let currentGame;
@@ -79,16 +80,23 @@ function updateCanvas() {
     gameMotor = requestAnimationFrame(updateCanvas);
     currentGame.dispScore();
     currentGame.drawHearts();
-    
+    if (lives != 0) {
+        invis.style.display = "none";
+    }
     if (lives >= 5 ){
         lives = 5;
     }
     if (lives === 0) {
+        changeTxt.innerHTML = "Try Again";
+        invis.style.display = "block";
+        document.getElementById("invis-text").innerHTML = `Your score was..................................... ${currentGame.score}`;
         lives = 5;
         music.pause();
         startLvl2 = false;
-        alert(`         Game Over!
-        Your score was: ${currentGame.score}`);
+        // alert(`         Game Over!
+        // Your score was: ${currentGame.score}`);
+    }else{
+        changeTxt.innerHTML = "Start Game";
     }
     
     if (startLvl2 === true) {

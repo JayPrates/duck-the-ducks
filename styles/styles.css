@@ -95,17 +95,60 @@ canvas {
     background-size: cover;
 }
 
+#canvas-board .left{
+    position: relative;
+    top: 60px;
+    left: 15px;
+}
+
+#canvas-board .right{
+    position: relative;
+    top: 35px;
+    right: 15px;
+}
+
 footer {
-    height: 100px;
+    height: 140px;
     width: 100%;
     background-color: brown;
     color: #FFF;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 footer p {
-    margin: 0 0 0 20px;
+    margin: 0 0 15px 20px;
     font-weight: 100;
     font-size: 13px;
+}
+
+#invis-gameover {
+    position: absolute;
+    top: 350px;
+    left: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#invis-gameover div {
+    display: flex;
+    flex-direction: column;
+}
+
+#invis-gameover h1 {
+    text-transform: uppercase;
+    font-size: 100px;
+    font-weight: 900;
+    color: coral;
+    margin-bottom: 0;
+    
+}
+
+
+#invis-gameover p {
+    font-size: 20px;
+    font-weight: 100;
+    color: #000;
 }
