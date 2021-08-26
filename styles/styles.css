@@ -5,7 +5,7 @@ body {
 }
 
 canvas {
-    border-style: solid;
+    border-style: none;
     border-color: rgba(188, 253, 255, 0.575);;
     background: url('../images/test_background.gif');
     background-repeat: no-repeat;

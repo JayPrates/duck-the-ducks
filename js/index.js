@@ -56,9 +56,11 @@ function timeout2() {
 
 //Level 2 - Seaguls Appear
 let startLvl2 = false;
-
-
+let controlWings = 0;
 function updateCanvas() {
+    controlWings = controlWings + 1;
+    controlWings %= 25;
+
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     console.log(canvas.clientWidth, canvas.clientHeight);
     gameMotor = requestAnimationFrame(updateCanvas);
@@ -74,10 +76,10 @@ function updateCanvas() {
     }
     
     if (startLvl2 === true) {
-        drawDucks();
+        drawDucks(controlWings);
         drawSeagulls();
     } else {
-        drawDucks();
+        drawDucks(controlWings);
     }
     if (currentGame.score === 10) {
          startLvl2 = true;
@@ -85,7 +87,7 @@ function updateCanvas() {
 } 
 
 //Drawing Ducks
-function drawDucks () {
+function drawDucks (controlWings) {
     currentGame.obstaclesFrequency++;
     if (currentGame.obstaclesFrequency % 120 === 1) {
         const randomObstacleY = Math.floor(Math.random() * 650);
@@ -112,14 +114,14 @@ function drawDucks () {
         if (obstacle.isDead){
             obstacle.y += 2;
             obstacle.x += 10;
-            obstacle.draw();
+            obstacle.draw(controlWings);
             if (obstacle.x > canvas.clientWidth) {
                 currentGame.obstacles.splice(index, 1);
             }
         } else {
             obstacle.x += 10;
             obstacle.isLeft = true;
-            obstacle.draw();
+            obstacle.draw(controlWings);
             if (obstacle.isDead === false && obstacle.x > canvas.clientWidth) {
                 currentGame.obstacles.splice(index, 1);
                 lives -= 1;
@@ -133,13 +135,13 @@ function drawDucks () {
         if (obstacle2.isDead){
             obstacle2.y += 2;
             obstacle2.x -= 10;
-            obstacle2.draw();
+            obstacle2.draw(controlWings);
             if(obstacle2.x < 0) {
                 currentGame.obstacles2.splice(index2, 1);
             }
         } else {
             obstacle2.x -= 10;
-            obstacle2.draw();
+            obstacle2.draw(controlWings);
             if(obstacle2.isDead === false && obstacle2.x < 0) {
                 currentGame.obstacles2.splice(index2, 1);
                 lives -= 1;
