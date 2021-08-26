@@ -87,8 +87,8 @@ function updateCanvas() {
         lives = 5;
         music.pause();
         startLvl2 = false;
-        /*alert(`         Game Over!
-        Your score was: ${currentGame.score}`);*/
+        alert(`         Game Over!
+        Your score was: ${currentGame.score}`);
     }
     
     if (startLvl2 === true) {
@@ -207,7 +207,6 @@ function drawSeagulls () {
         if (obstacleS2.isDead){
             obstacleS2.y += 2;
             obstacleS2.x -= 15;
-            //obstacles2.x;
             obstacleS2.draw();
         } else {
             obstacleS2.x -= 15;
@@ -251,12 +250,11 @@ function drawSeagulls () {
     })
 }
 
-canvas.addEventListener('click', (e) => {
+canvas.addEventListener('mousedown', (e) => {
     let pointerX = e.offsetX;
     let pointerY = e.offsetY;
     console.log(e);
     for(let i = 0; i<currentGame.obstacles2.length; i++) {
-        console.log(`logging obstacles ${currentGame.obstacles2[i].x}, ${currentGame.obstacles2[i].y}`)
         if (currentGame.obstacles2[i].x < pointerX && (currentGame.obstacles2[i].x + currentGame.obstacles2[i].width) > pointerX && (currentGame.obstacles2[i].y - 5) < pointerY && (currentGame.obstacles2[i].y + currentGame.obstacles2[i].width) > pointerY) {
             quackSound.play();
             console.log("This is working Right Ducks")
@@ -271,7 +269,7 @@ canvas.addEventListener('click', (e) => {
     }
 
     for(let i = 0; i<currentGame.obstacles.length; i++) {
-        if (currentGame.obstacles[i].x < pointerX && (currentGame.obstacles[i].x + currentGame.obstacles[i].width) > pointerX && (currentGame.obstacles[i].y - 5) < pointerY && (currentGame.obstacles[i].y + currentGame.obstacles[i].width + 5) > pointerY) {
+        if (-(currentGame.obstacles[i].x) < pointerX && (currentGame.obstacles[i].width + currentGame.obstacles[i].x) > pointerX && (currentGame.obstacles[i].y - 5) < pointerY && (currentGame.obstacles[i].y + currentGame.obstacles[i].height + 5) > pointerY) {
             quackSound.play();
             console.log("This is working Left Ducks")
             console.log(currentGame.obstacles[i].x, currentGame.obstacles[i].y);
@@ -287,7 +285,6 @@ canvas.addEventListener('click', (e) => {
     }
 //for i seagulls
     for(let i = 0; i<currentGame.obstaclesSeag2.length; i++) {
-        console.log(`logging obstacles ${currentGame.obstaclesSeag2[i].x}, ${currentGame.obstaclesSeag2[i].y}`)
         if (currentGame.obstaclesSeag2[i].x < pointerX && currentGame.obstaclesSeag2[i].x + currentGame.obstaclesSeag2[i].width > pointerX && currentGame.obstaclesSeag2[i].y < pointerY && (currentGame.obstaclesSeag2[i].y + 50) > pointerY) {
             console.log("This is working Right Seagulls")
             console.log(currentGame.obstaclesSeag2[i]);
@@ -301,10 +298,8 @@ canvas.addEventListener('click', (e) => {
     }
 
     for(let i = 0; i<currentGame.obstaclesSeag.length; i++) {
-        console.log(`logging obstacles ${currentGame.obstaclesSeag[i].x}, ${currentGame.obstaclesSeag[i].y}`)
         if (currentGame.obstaclesSeag[i].x < pointerX && currentGame.obstaclesSeag[i].x + currentGame.obstaclesSeag[i].width > pointerX && currentGame.obstaclesSeag[i].y < pointerY && (currentGame.obstaclesSeag[i].y + 50) > pointerY) {
             console.log("This is working Left Seagulls")
-            console.log(currentGame.obstaclesSeag[i]);
             if(currentGame.obstaclesSeag[i].isDead){
                 currentGame.score += 0
             }else {
