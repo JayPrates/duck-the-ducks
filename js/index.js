@@ -1,6 +1,9 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
+let invis = document.getElementById("invis-gameover");
+invis.style.display = "none";
+
 document.getElementById("start-button").onclick = () => {
     startGame();
 };
@@ -16,7 +19,6 @@ const heartEmptyImg = new Image()
       heartEmptyImg.src = "./images/game_content/test_heart_dead.png";
 
 let changeTxt = document.getElementById("start-button");
-let invis = document.getElementById("invis-gameover");
 
 //LVL1
 let currentGame;
