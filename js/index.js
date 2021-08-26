@@ -19,7 +19,7 @@ const heartEmptyImg = new Image()
 
 //LVL1
 let currentGame;
-let lives = 50;
+let lives = 5;
 
 function startGame() {
     currentGame = new Game();
@@ -40,7 +40,7 @@ function timeoutCheckLv2() {
 
 function timeout() {
     setTimeout(function () {
-        const randomObstacleY = Math.floor(Math.random() * 650);
+        const randomObstacleY = Math.floor(Math.random() * 600);
         newObstacleSeag3 = new Seagull(
             900,
             randomObstacleY);
@@ -54,7 +54,7 @@ function timeout() {
 
 function timeout2() {
     setTimeout(function () {
-        const randomObstacleY = Math.floor((Math.random() * 550) + 70);
+        const randomObstacleY = Math.floor((Math.random() * 550) + 50);
         newObstacleSeag4 = new Seagull(
         0,
         randomObstacleY);
@@ -97,7 +97,7 @@ function updateCanvas() {
     } else {
         drawDucks(controlWings);
     }
-    if (currentGame.score === 10) {
+    if (currentGame.score === 100) {
          startLvl2 = true;
      }
 } 
@@ -106,7 +106,7 @@ function updateCanvas() {
 function drawDucks (controlWings) {
     currentGame.obstaclesFrequency++;
     if (currentGame.obstaclesFrequency % 120 === 1) {
-        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 50);
         const newObstacle = new Duck(
         0,
         randomObstacleY);
@@ -115,7 +115,7 @@ function drawDucks (controlWings) {
 
     }
     if (currentGame.obstaclesFrequency % 267 === 1) {
-        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 50);
         const newObstacle2 = new Duck(
             900,
             randomObstacleY
@@ -169,7 +169,7 @@ function drawDucks (controlWings) {
 //Drawing Seagulls
 function drawSeagulls () {
     if (currentGame.obstaclesFrequency % 120 === 1) {
-        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 50);
         newObstacleSeag = new Seagull(
         0,
         randomObstacleY);
@@ -177,7 +177,7 @@ function drawSeagulls () {
     }
 
     if (currentGame.obstaclesFrequency % 180 === 1) {
-        const randomObstacleY = Math.floor((Math.random() * 600) + 70);
+        const randomObstacleY = Math.floor((Math.random() * 600) + 50);
         newObstacleSeag2 = new Seagull(
             900,
             randomObstacleY);
