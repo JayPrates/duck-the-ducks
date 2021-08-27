@@ -119,7 +119,7 @@ function drawDucks (controlWings) {
     if (currentGame.obstaclesFrequency % 120 === 1) {
         const randomObstacleY = Math.floor((Math.random() * 600) + 50);
         const newObstacle = new Duck(
-        0,
+        -20,
         randomObstacleY);
 
     currentGame.obstacles.push(newObstacle);
@@ -139,14 +139,14 @@ function drawDucks (controlWings) {
 
     currentGame.obstacles.forEach((obstacle, index) => {
         if (obstacle.isDead){
-            obstacle.y += 2;
-            obstacle.x += 10;
+            obstacle.y += 3;
+            obstacle.x += 12;
             obstacle.draw(controlWings);
             if (obstacle.x > canvas.clientWidth) {
                 currentGame.obstacles.splice(index, 1);
             }
         } else {
-            obstacle.x += 10;
+            obstacle.x += 12;
             obstacle.isLeft = true;
             obstacle.draw(controlWings);
             if (obstacle.isDead === false && obstacle.x > canvas.clientWidth) {
@@ -160,14 +160,14 @@ function drawDucks (controlWings) {
 
     currentGame.obstacles2.forEach((obstacle2, index2) => {
         if (obstacle2.isDead){
-            obstacle2.y += 2;
-            obstacle2.x -= 10;
+            obstacle2.y += 3;
+            obstacle2.x -= 12;
             obstacle2.draw(controlWings);
             if((obstacle2.x + 70) < 0) {
                 currentGame.obstacles2.splice(index2, 1);
             }
         } else {
-            obstacle2.x -= 10;
+            obstacle2.x -= 12;
             obstacle2.draw(controlWings);
             if(obstacle2.isDead === false && (obstacle2.x + 70) < 0) {
                 currentGame.obstacles2.splice(index2, 1);
@@ -257,7 +257,7 @@ function drawSeagulls () {
             hear2 = context.drawImage(currentGame.imageH1, seagHeart2.x , (seagHeart2.y + 50), 32, 32);
         }
         seagHeart2.draw();
-        if(seagHeart2.width > 900) {
+        if(seagHeart2.x > 900) {
             currentGame.obstaclesSeag4.splice(index6, 1);
             console.log("left seag spliced");
         }
