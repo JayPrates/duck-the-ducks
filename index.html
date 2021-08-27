@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100;0,400;0,900;1,900&display=swap" rel="stylesheet">   
+    <link rel="icon" sizes="114x114" href="./images/char_duck_dead_head_white.png">
     <script type="text/javascript" src="js/ducks.js" defer></script>
     <script type="text/javascript" src="js/seaguls.js" defer></script>
     <script type="text/javascript" src="js/game.js" defer></script>
@@ -18,24 +19,26 @@
     <div id="game-board">
         <header id="menu">
             <div class="leftM">
+                <a href="https://duck-the-ducks.netlify.app/"><img src="./images/char_duck_dead_head_white.png" height="38px"/></a>
                 <h1>Duck the ducks</h1>
-                <div class="instructions">
-                    <img class="instructionsPointer" src="./images/icon-pointer.png" height="40px">
-                    <p>Use your mouse to eliminate the ducks and stop them from attacking the city</p>
-                </div>
+            </div>
+            <div class="rightM">
+            <div class="instructions">
+                <img class="instructionsPointer" src="./images/icon-pointer.png" height="40px">
+                <p>Use your mouse to eliminate the ducks and stop them from attacking the city</p>
             </div>
             <button id="start-button">Start Game</button>
+            </div>
         </header>
         <div id="invis-gameover">
             <div>
-                <h1>Get Quacked!</h1>
+                <h1 id="invis-head"></h1>
                 <p id="invis-text"></p>
             </div>
         </div>
         <div id="canvas-board">
             <div>
             <img class="left" src="./images/game_content/building_l.png" height = "700px" width="250px" alt="pink building"/>
-            <!-- postion absolute images so they overlay a bit of the canvas -->
             <canvas id="canvas" width="900" height="700"></canvas>
             <img class="right" src="./images/game_content/building_r.png" height = "700px" width="250px" alt="pink building"/>
             </div>

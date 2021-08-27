@@ -90,7 +90,8 @@ function updateCanvas() {
     }
     if (lives === 0) {
         changeTxt.innerHTML = "Try Again";
-        invis.style.display = "block";
+        invis.style.display = "flex";
+        document.getElementById("invis-head").innerHTML = `Get Quacked!`;
         document.getElementById("invis-text").innerHTML = `Your score was..................................... ${currentGame.score}`;
         lives = 5;
         music.pause();
