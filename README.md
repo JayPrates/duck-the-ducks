@@ -7,7 +7,7 @@
 
 
 <p align="center">
-<img src='helpr.png'/>
+<img src='duck.png'/>
 </p>
 
 
