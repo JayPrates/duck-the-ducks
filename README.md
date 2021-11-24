@@ -34,7 +34,7 @@ Duck the Ducks is a web game that captures the vintage feel of duck hunt in a mo
 
 
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [HTML](hhttps://developer.mozilla.org/en-US/docs/Web/HTML)
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [Bootstrap](https://getbootstrap.com/)
 
