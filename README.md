@@ -55,7 +55,7 @@ A live demo of the web game can be found in the following link:
 ## Gameplay
 
 Player must duck the ducks before they manage to fly across buildings. For each duck that makes it across the player will lose one live. 
-Users start with 3 lives. when all 3 lives are lost the user will be met with a game over.
+Users start with 5 lives. when all 5 lives are lost the user will be met with a game over.
 
 
 
